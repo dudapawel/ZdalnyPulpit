@@ -5,14 +5,12 @@ import {DesktopContainer} from '../containers/DesktopContainer.jsx';
 
 const style = {
     border: 'none',
-    outline: 'none'
 }
-
 
 export const Page = ()=>{
     return (<div style={style}>
-                <HeaderContainer/>
-                <SideMenuContainer/>
+                <HeaderContainer />
                 <DesktopContainer/>
+                <SideMenuContainer/>
             </div>);
 }

@@ -4,10 +4,15 @@ const style = {
     backgroundColor:'pink',
     border: 3,
     borderColor: 'black',
-    height: 600,
-    width:200
+    borderStyle:'solid',
+    height: window.innerHeight-103,
+    width:194,
+    position:'absolute',
+    left:0,
+    top:97
 }
 
 export const SideMenu = ()=>{
-    return <div style={style}></div>;
+    return <div style={style}>
+    </div>;
 }

@@ -1,22 +1,25 @@
 import React from 'react';
-import {BlockContainer} from '../containers/BlockContainer.jsx';
+import PropTypes from 'prop-types';
+
 const style = {
     backgroundColor:'bisque',
     border: 'none',
     outline: 'none',
-    height: 800,
-    marginLeft:'300px'
+    height: window.innerHeight-100,
+    marginLeft:200,
+    contain:'layout'
 }
 
 export const Desktop = (props)=>{
-    return (<div style ={style} onMouseUp={props.onMouseUp} 
+    return (<div id="desktop" style ={style} onMouseUp={props.onMouseUp} 
             onMouseMove={props.onMouseMove} 
-            onMouseLeave={props.onMouseMove} >
-                <BlockContainer left={200} top={200} 
-                addToOnMouseUp={props.addToOnMouseUp}
-                addToOnMouseMove={props.addToOnMouseMove}
-                removeFromOnMouseMove={props.removeFromOnMouseMove}
-                />
+            onMouseLeave={props.onMouseUp} >
+                {props.arrayOfBlocks}
             </div>);
 }
 
+Desktop.propTypes = {
+    onMouseUp:PropTypes.func.isRequired,
+    onMouseMove:PropTypes.func.isRequired,
+    arrayOfBlocks:PropTypes.array
+}
