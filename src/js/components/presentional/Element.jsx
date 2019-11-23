@@ -7,7 +7,10 @@ const style={
 }
 
 export const Element = (props)=>{
-    return (<div style={style}>
-        <props.contentClass  value={props.value}/>
+    return (<div style={style} onClick={props.onClick}>
+        <props.contentClass  value={props.value}
+                        addToOnClick ={props.addToOnClick}
+                        removeFromOnClick={props.removeFromOnClick}
+                        changeContent={props.changeContent}/>
         </div>);
 }

@@ -7,10 +7,11 @@ const style = {
     border: 'none',
 }
 
-export const Page = ()=>{
+export const Page = (props)=>{
     return (<div style={style}>
                 <HeaderContainer />
-                <DesktopContainer/>
+                <DesktopContainer arrayOfBlocksProp={props.arrayOfBlocksProp} 
+                                    setBlockProperties={props.setBlockProperties}/>
                 <SideMenuContainer/>
             </div>);
 }

@@ -14,13 +14,7 @@ export class DesktopContainer extends React.Component{
         this.removeFromOnMouseMove=this.removeFromOnMouseMove.bind(this);
         this.state = {
             onMouseUpEvent:[],
-            onMouseMoveEvent:[],
-            arrayOfBlocks:[(<BlockContainer layout={{left:200, top:200, height:80, width:80}}
-                content = {<ContentType.Text value={'df'}/>}
-                addToOnMouseUp={this.addToOnMouseUp}
-                addToOnMouseMove={this.addToOnMouseMove}
-                removeFromOnMouseMove={this.removeFromOnMouseMove}
-            />)]
+            onMouseMoveEvent:[]
         }
         
     }
@@ -45,6 +39,17 @@ export class DesktopContainer extends React.Component{
         this.state.onMouseMoveEvent.splice(this.state.onMouseMoveEvent.indexOf(func),1);
     }
     render(){
+        this.state.arrayOfBlocks=this.props.arrayOfBlocksProp.map((BlockProp,index)=>{
+            return (<BlockContainer layout={BlockProp.layout}
+                content = {<ContentType.Text value={'df'}/>}
+                arrayOfElementsProp = {BlockProp.arrayOfElementsProp}
+                addToOnMouseUp={this.addToOnMouseUp}
+                addToOnMouseMove={this.addToOnMouseMove}
+                removeFromOnMouseMove={this.removeFromOnMouseMove}
+                setBlockProperties={this.props.setBlockProperties}
+                blockNumber={index}
+            />)
+        });
         return (<Desktop onMouseUp={this.onMouseUp} 
         onMouseMove={this.onMouseMove} 
         arrayOfBlocks={this.state.arrayOfBlocks}

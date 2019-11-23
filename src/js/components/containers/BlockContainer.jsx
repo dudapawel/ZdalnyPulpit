@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import {Block} from '../presentional/Block.jsx';
 import {ElementContainer, ElementProperties} from '../containers/ElementContainer.jsx'
 
+
+
+
 export class BlockContainer extends React.Component{
     constructor(props){
         super(props);
@@ -17,10 +20,7 @@ export class BlockContainer extends React.Component{
             resizeStartDifference:{
                 left:0,
                 top:0, 
-            },
-            arrayOfElements:    [<ElementContainer elementProperties ={new ElementProperties('Text', 'hej')}/>,
-                                <ElementContainer elementProperties ={new ElementProperties('New')}/>]
-
+            }
         }
         this.moveStart=this.moveStart.bind(this);
         this.moveStop=this.moveStop.bind(this);
@@ -32,6 +32,7 @@ export class BlockContainer extends React.Component{
         this.handleResizeStop=this.handleResizeStop.bind(this);
         this.handleResize=this.handleResize.bind(this);
         this.handleResizeStart=this.handleResizeStart.bind(this);
+        this.setElementProperties=this.setElementProperties.bind(this);
     }
     moveStart(left, top){
         this.setState({
@@ -45,6 +46,7 @@ export class BlockContainer extends React.Component{
     }
     moveStop(left, top){
         this.move(left, top);
+        this.props.setBlockProperties(this.props.blockNumber,{layout:this.state.layout})
         this.props.removeFromOnMouseMove(this.handleMove);
         
     }
@@ -77,6 +79,7 @@ export class BlockContainer extends React.Component{
     }
     resizeStop(left, top){
         this.resize(left, top);
+        this.props.setBlockProperties(this.props.blockNumber,{layout:this.state.layout})
         this.props.removeFromOnMouseMove(this.handleResize);
         
     }
@@ -102,7 +105,18 @@ export class BlockContainer extends React.Component{
         if(value>max) return max;
         return value;
     }
+    setElementProperties(elementNumber, newElementProperties){
+        const tempArrayOfElementsProp=this.props.arrayOfElementsProp;
+        Object.assign(newElementProperties,tempArrayOfElementsProp[elementNumber]);
+        this.props.setBlockProperties(this.props.blockNumber,{arrayOfElementsProp:tempArrayOfElementsProp});
+    }
     render(){
+        this.state.arrayOfElements=this.props.arrayOfElementsProp.map((ElementProp,index)=>{
+            return (<ElementContainer elementProperties ={ElementProp}
+                        setElementProperties={this.setElementProperties}
+                        elementNumber={index}
+            />)
+        })
         return <Block   layout={this.state.layout}
         value={this.state.value} 
         handleMoveStart={this.handleMoveStart}
