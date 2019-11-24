@@ -13,18 +13,21 @@ class Base extends React.Component{
 class Text extends Base{
     constructor(props){
         super(props);
-        this.state={
-            value:props.value
-        }
     }
     change(){
         window.console.error('f');
-        this.props.changeContent(new ElementProperties(Text, prompt('Set new value')));
+        this.props.changeContent(new ElementProperties('Text', prompt('Set new value',this.state.value)));
         
         
     }
     render(){
-        return <p>{this.state.value}</p>
+        const style={
+            wordWrap:'break-word'
+        }
+        this.state={
+            value:this.props.value
+        }
+        return <p style={style}>{this.state.value}</p>
     }
 
 }

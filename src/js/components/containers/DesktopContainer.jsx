@@ -47,6 +47,7 @@ export class DesktopContainer extends React.Component{
                 addToOnMouseMove={this.addToOnMouseMove}
                 removeFromOnMouseMove={this.removeFromOnMouseMove}
                 setBlockProperties={this.props.setBlockProperties}
+                removeBlockProperties={this.props.removeBlockProperties}
                 blockNumber={index}
             />)
         });

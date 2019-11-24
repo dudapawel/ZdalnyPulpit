@@ -11,7 +11,8 @@ export const Page = (props)=>{
     return (<div style={style}>
                 <HeaderContainer />
                 <DesktopContainer arrayOfBlocksProp={props.arrayOfBlocksProp} 
-                                    setBlockProperties={props.setBlockProperties}/>
-                <SideMenuContainer/>
+                                    setBlockProperties={props.setBlockProperties}
+                                    removeBlockProperties={props.removeBlockProperties}/>
+                <SideMenuContainer addBlockProperties={props.addBlockProperties}/>
             </div>);
 }

@@ -3,6 +3,6 @@ import {SideMenu} from '../presentional/SideMenu.jsx';
 
 export class SideMenuContainer extends React.Component{
     render(){
-        return <SideMenu/>;
+        return <SideMenu addBlockProperties={this.props.addBlockProperties}/>;
     }
 }

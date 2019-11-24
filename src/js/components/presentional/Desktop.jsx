@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const style = {
-    backgroundColor:'bisque',
+    backgroundColor:'#e6f7ff',
     border: 'none',
     outline: 'none',
     height: window.innerHeight-100,
